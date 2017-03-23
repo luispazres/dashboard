@@ -1,8 +1,3 @@
-<style media="screen">
-  .col-md-3 {
-    margin-left: 80%;
-}
-</style>
 <h1>Listado de Empresas</h1>
 <hr />
   <div class="container">
@@ -103,12 +98,9 @@
 
 
 
+<script type="text/javascript" src="public/js/datatable.min.js"></script>
+  <script type="text/javascript" src="public/js/datatable.jquery.min.js"></script>
 <script type="text/javascript">
-$('#example-table').datatable({
-    pageSize: 5,
-    sort: [true, true, false],
-
-}) ;
 
 $(document).ready(function() {
     var activeSystemClass = $('.list-group-item.active');
@@ -155,10 +147,15 @@ $(document).ready(function() {
         }
     });
 
+    $('#example-table').datatable({
+        pageSize: 5,
+        sort: [true, true, false],
+    }) ;
+
     $("#btnExport").click(function(e) {
       e.preventDefault();
 
-      
+
       var data_type = 'data:application/vnd.ms-word';
       var table_div = document.getElementById('table_wrapper');
       var table_html = table_div.outerHTML.replace(/ /g, '%20');

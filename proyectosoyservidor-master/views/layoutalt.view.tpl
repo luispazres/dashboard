@@ -7,6 +7,8 @@
             <!--<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>-->
           <script src="public/js/jquery.js"></script>
             <script type="text/javascript" src="public/js/bootstrap.js" ></script>
+            <script type="text/javascript" src="public/js/datatable.min.js"></script>
+              <script type="text/javascript" src="public/js/datatable.jquery.min.js"></script>
             <link rel="stylesheet"  href="public/css/bootstrap.css" rel="stylesheet" >
             <link rel="stylesheet" href="public/css/datatable-bootstrap.min.css" type="text/css">
             <link rel="stylesheet" href="public/css/datatable.min.css" type="text/css">
@@ -23,8 +25,5 @@
                 {{{page_content}}}
             </div>
           {{page_header2}}
-            <!--<div class="footer">
-                Derechos Reservados 2016
-            </div>-->
         </body>
     </html>
