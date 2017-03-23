@@ -63,7 +63,7 @@ function site_init(){
 
 foreach ($contratosVencidos as $key) {
   $cont++;
-  $contratosHeader.="<li class='notification'>
+/*  $contratosHeader.="<li class='notification'>
   <div class='media'>
   <div class='media-left'>
   <div class='media-object'>
@@ -79,12 +79,25 @@ foreach ($contratosVencidos as $key) {
 
   </div>
   </div>
-  </li>";
+  </li>";*/
+
+  $contratosHeader.="  <li>
+      <a>
+        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image'></span>
+        <span>
+          <span>Alerta de Vencimiento</span>
+          <span class='time'>".$key["ContratoFechaFinal"]."</span>
+        </span>
+        <span class='message'>
+          El contrato #".$key["ContratoCodigo"]." de la empresa ".$key["EmpresaNombre"]." esta vencido.
+        </span>
+      </a>
+    </li>";
 }
 
   foreach ($contratosAVencer as $key) {
     $cont++;
-    $contratosHeader.="<li class='notification'>
+  /*  $contratosHeader.="<li class='notification'>
     <div class='media'>
     <div class='media-left'>
     <div class='media-object'>
@@ -100,9 +113,9 @@ foreach ($contratosVencidos as $key) {
 
     </div>
     </div>
-    </li>";
+    </li>";*/
 
-    $contratosHeader="  <li>
+    $contratosHeader.="  <li>
         <a>
           <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image'></span>
           <span>
@@ -110,22 +123,25 @@ foreach ($contratosVencidos as $key) {
             <span class='time'>".$key["ContratoFechaFinal"]."</span>
           </span>
           <span class='message'>
-            El contrato #".$key["ContratoCodigo"]." de la empresa ".$key["EmpresaNombre"]."
+            El contrato #".$key["ContratoCodigo"]." de la empresa ".$key["EmpresaNombre"]." esta por vencer.
           </span>
         </a>
       </li>";
   }
 
   if (!obtenerAlerta($alert)) {
+      insertarAlerta($alert);
     $contratos=obtenerTodosLosContratos();
 
     foreach ($contratos as $key) {
 
-    $convertedDate=strtotime($key["ContratoFechaFinal"]);
-    $dia = date('d',$convertedDate);
-    $mes = date('m',$convertedDate);
-    $anio= date('Y',$convertedDate);
+      $convertedDate=strtotime($key["ContratoFechaFinal"]);
+      $vencimientoObjeto = new DateTime(date($key["ContratoFechaFinal"]));
+      $dia = date('d',$convertedDate);
+      $mes = date('m',$convertedDate);
+      $anio= date('Y',$convertedDate);
 
+      $interval = $hoyObjeto->diff($vencimientoObjeto);
     if ($interval->days==29) {
 
       $mail = new PHPMailer;
@@ -134,15 +150,15 @@ foreach ($contratosVencidos as $key) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'desarrollojr@soyservidor.com';
-    $mail->Password = 'soyservidor2017';                           // SMTP password
+    $mail->Username = 'luiseduardopazreyes02@gmail.com';
+    $mail->Password = 'lopspine1995';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465 ;                                    // TCP port to connect to
 
-    $mail->setFrom('desarrollojr@soyservidor.com', 'Mailer');
-    $mail->addAddress('michi.navarro1994@gmail.com', 'Michelle');     // Add a recipient
+    $mail->setFrom('luiseduardopazreyes02@gmail.com', 'Mailer');
+    $mail->addAddress('luiseduardopazreyes@hotmail.es', 'Michelle');     // Add a recipient
     //$mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('desarrollojr@soyservidor.com', 'Information');
+    $mail->addReplyTo('luiseduardopazreyes02@gmail.com', 'Information');
     //$mail->addCC('cc@example.com');
     //$mail->addBCC('bcc@example.com');
 
@@ -162,7 +178,8 @@ foreach ($contratosVencidos as $key) {
     }
   }
 
-  if ($interval->days==14) {
+
+if ($interval->days==14) {
 
   $mail = new PHPMailer;
 
@@ -170,15 +187,15 @@ foreach ($contratosVencidos as $key) {
   $mail->isSMTP();
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = 'desarrollojr@soyservidor.com';
-  $mail->Password = 'soyservidor2017';                           // SMTP password
+  $mail->Username = 'luiseduardopazreyes02@gmail.com';
+  $mail->Password = 'lopspine1995';                           // SMTP password
   $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465 ;                                    // TCP port to connect to
 
-  $mail->setFrom('desarrollojr@soyservidor.com', 'Mailer');
+  $mail->setFrom('luiseduardopazreyes02@gmail.com', 'Mailer');
   $mail->addAddress('michi.navarro1994@gmail.com', 'Michelle');        // Add a recipient
   //$mail->addAddress('ellen@example.com');               // Name is optional
-  $mail->addReplyTo('desarrollojr@soyservidor.com', 'Information');
+  $mail->addReplyTo('luiseduardopazreyes02@gmail.com', 'Information');
   //$mail->addCC('cc@example.com');
   //$mail->addBCC('bcc@example.com');
 
@@ -206,15 +223,15 @@ foreach ($contratosVencidos as $key) {
   $mail->isSMTP();
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = 'desarrollojr@soyservidor.com';
-  $mail->Password = 'soyservidor2017';                           // SMTP password
+  $mail->Username = 'luiseduardopazreyes02@gmail.com';
+  $mail->Password = 'lopspine1995';                           // SMTP password
   $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465 ;                                    // TCP port to connect to
 
-  $mail->setFrom('desarrollojr@soyservidor.com', 'Mailer');
+  $mail->setFrom('luiseduardopazreyes02@gmail.com', 'Mailer');
   $mail->addAddress('michi.navarro1994@gmail.com', 'Michelle');         // Add a recipient
   //$mail->addAddress('ellen@example.com');               // Name is optional
-  $mail->addReplyTo('desarrollojr@soyservidor.com', 'Information');
+  $mail->addReplyTo('luiseduardopazreyes02@gmail.com', 'Information');
   //$mail->addCC('cc@example.com');
   //$mail->addBCC('bcc@example.com');
 
@@ -235,12 +252,10 @@ foreach ($contratosVencidos as $key) {
 }
 
     }
-
-  insertarAlerta($alert);
 }
 
 
-$alertas="
+/*$alertas="
   <div class='btn-group dropdown dropdown-notifications sw-open'>
   <button class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
   <i data-count='".$cont."' class='glyphicon glyphicon-bell notification-icon'></i>
@@ -259,7 +274,7 @@ $alertas="
 ".$contratosHeader."
   </ul>
   </div>
-  </div>";
+  </div>";*/
 
 
 if(mw_estaLogueado()){
@@ -393,60 +408,13 @@ if(mw_estaLogueado()){
                     <li role='presentation' class='dropdown'>
                   <a href='javascript:;' class='dropdown-toggle info-number' data-toggle='dropdown' aria-expanded='false'>
                     <i class='fa fa-envelope-o'></i>
-                    <span class='badge bg-green'>6</span>
+                    <span class='badge bg-green'>".$cont."</span>
                   </a>
                   <ul id='menu1' class='dropdown-menu list-unstyled msg_list' role='menu'>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image'></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image'></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image'></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image'></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
+                    ".$contratosHeader."
                     <li>
                       <div class='text-center'>
-                        <a>
+                        <a href='index.php?page=alertaContratos'>
                           <strong>See All Alerts</strong>
                           <i class='fa fa-angle-right'></i>
                         </a>
@@ -624,59 +592,15 @@ if(mw_estaLogueado()){
                 </li>
 
                 <li role='presentation' class='dropdown'>
-                  ".$alertas."
-                  <ul id='menu1' class='dropdown-menu list-unstyled msg_list' role='menu'>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image' /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image' /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image' /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class='image'><img src='public/imgs/img.jpg' alt='Profile Image' /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class='time'>3 mins ago</span>
-                        </span>
-                        <span class='message'>
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
+              <a href='javascript:;' class='dropdown-toggle info-number' data-toggle='dropdown' aria-expanded='false'>
+                <i class='fa fa-envelope-o'></i>
+                <span class='badge bg-green'>".$cont."</span>
+              </a>
+              <ul id='menu1' class='dropdown-menu list-unstyled msg_list' role='menu'>
+                ".$contratosHeader."
+                <li>
                       <div class='text-center'>
-                        <a>
+                        <a href='index.php?page=alertaContratos'>
                           <strong>See All Alerts</strong>
                           <i class='fa fa-angle-right'></i>
                         </a>

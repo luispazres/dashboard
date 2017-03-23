@@ -99,11 +99,11 @@
         }
 
      //Restablece la contrasena
-    function actualizarRegistro($Email, $password){
-     $updSql = "update tblusuarios set usuariocontrasenia='%s' where usuariocorreo='%s';";
-     $result = ejecutarNonQuery(sprintf($updSql,$password,$Email));
-     return ($result > 0) && true;
-   }
+     function actualizarRegistro($usuarioCodigo, $password){
+       $updSql = "update tblusuarios set usuarioContrasenia='%s' where usuarioCodigo='%d';";
+       $result = ejecutarNonQuery(sprintf($updSql,$password,$usuarioCodigo));
+       return ($result > 0) && true;
+     }
 
     function obtenerCodigo($usuarioCodigo){
       $registro = array();

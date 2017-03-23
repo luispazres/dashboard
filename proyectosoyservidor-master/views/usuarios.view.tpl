@@ -59,6 +59,11 @@
           >
             <span class="glyphicon glyphicon-trash"></span>
           </a>
+          <a class="btn" title="Eliminar Usuario" role="button"
+            href="index.php?page=restablecerContrasena&mode=RTC&usuarioCodigo={{usuarioCodigo}}"
+          >
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
         </td>
       </tr>
   {{endfor tblusuarios}}
