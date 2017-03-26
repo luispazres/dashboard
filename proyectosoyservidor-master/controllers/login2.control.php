@@ -1,4 +1,3 @@
-
 <?php
   require_once("libs/template_engine.php");
   require_once("libs/dao.php");
@@ -10,11 +9,6 @@
     $returnUrl = "";
     $errores = array();
     $rolCod["txtCargo"]="";
-
-     if(isset($_POST["btnPrueba"])){
-       header("location:index.php?page=restablecerContrasena");
-     }
-
 
     if(isset($_POST["btnLogin"])){
         $userName = $_POST["txtUser"];
@@ -51,3 +45,4 @@
          }
          run();
        ?>
+

@@ -46,16 +46,16 @@ function site_init(){
     $contratosVencidos[]=$key;
   }
 
-  if ($interval->days==14) {
+  if ($interval->days==13) {
     $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==29) {
+  if ($interval->days==28) {
 
   $contratosAVencer[]=$key;
   }
 
-  if ($interval->days==6) {
+  if ($interval->days==5) {
 
   $contratosAVencer[]=$key;
   }
@@ -142,23 +142,25 @@ foreach ($contratosVencidos as $key) {
       $anio= date('Y',$convertedDate);
 
       $interval = $hoyObjeto->diff($vencimientoObjeto);
+
     if ($interval->days==29) {
 
       $mail = new PHPMailer;
 
     $mensaje="Alerta de vencimiento\n\n El contrato #".$key["ContratoCodigo"]." tiene 15 dias de vigencia antes de su vencimiento";
     $mail->isSMTP();
+    //$mail->SMTPDebug=2;
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'luiseduardopazreyes02@gmail.com';
-    $mail->Password = 'lopspine1995';                           // SMTP password
+    $mail->Username = 'desarrollojr@soyservidor.com';
+    $mail->Password = 'soyservidor2017';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 465 ;                                    // TCP port to connect to
 
-    $mail->setFrom('luiseduardopazreyes02@gmail.com', 'Mailer');
-    $mail->addAddress('luiseduardopazreyes@hotmail.es', 'Michelle');     // Add a recipient
+    $mail->setFrom('desarrollojr@soyservidor.com', 'Mailer');
+    $mail->addAddress('michi.navarro1994@gmail.com', 'Michelle');     // Add a recipient
     //$mail->addAddress('ellen@example.com');               // Name is optional
-    $mail->addReplyTo('luiseduardopazreyes02@gmail.com', 'Information');
+    $mail->addReplyTo('desarrollojr@soyservidor.com', 'Information');
     //$mail->addCC('cc@example.com');
     //$mail->addBCC('bcc@example.com');
 
@@ -178,24 +180,24 @@ foreach ($contratosVencidos as $key) {
     }
   }
 
-
 if ($interval->days==14) {
 
   $mail = new PHPMailer;
 
   $mensaje="Alerta de vencimiento\n\n El contrato #".$key["ContratoCodigo"]." tiene 15 dias de vigencia antes de su vencimiento";
   $mail->isSMTP();
+  //$mail->SMTPDebug=2;
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = 'luiseduardopazreyes02@gmail.com';
-  $mail->Password = 'lopspine1995';                           // SMTP password
+  $mail->Username = 'desarrollojr@soyservidor.com';
+  $mail->Password = 'soyservidor2017';                           // SMTP password
   $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465 ;                                    // TCP port to connect to
 
-  $mail->setFrom('luiseduardopazreyes02@gmail.com', 'Mailer');
+  $mail->setFrom('desarrollojr@soyservidor.com', 'Mailer');
   $mail->addAddress('michi.navarro1994@gmail.com', 'Michelle');        // Add a recipient
   //$mail->addAddress('ellen@example.com');               // Name is optional
-  $mail->addReplyTo('luiseduardopazreyes02@gmail.com', 'Information');
+  $mail->addReplyTo('desarrollojr@soyservidor.com', 'Information');
   //$mail->addCC('cc@example.com');
   //$mail->addBCC('bcc@example.com');
 
@@ -219,19 +221,20 @@ if ($interval->days==14) {
 
    $mail = new PHPMailer;
 
-  $mensaje="Alerta de vencimiento\n\n El contrato #".$key["ContratoCodigo"]." tiene 15 dias de vigencia antes de su vencimiento";
+  $mensaje="Alerta de vencimiento\n\n El contrato #".$key["ContratoCodigo"]." tiene 7 dias de vigencia antes de su vencimiento";
   $mail->isSMTP();
+  //$mail->SMTPDebug=2;
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = 'luiseduardopazreyes02@gmail.com';
-  $mail->Password = 'lopspine1995';                           // SMTP password
+  $mail->Username = 'desarrollojr@soyservidor.com';
+  $mail->Password = 'soyservidor2017';                         // SMTP password
   $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465 ;                                    // TCP port to connect to
 
-  $mail->setFrom('luiseduardopazreyes02@gmail.com', 'Mailer');
+  $mail->setFrom('desarrollojr@soyservidor.com', 'Mailer');
   $mail->addAddress('michi.navarro1994@gmail.com', 'Michelle');         // Add a recipient
   //$mail->addAddress('ellen@example.com');               // Name is optional
-  $mail->addReplyTo('luiseduardopazreyes02@gmail.com', 'Information');
+  $mail->addReplyTo('desarrollojr@soyservidor.com', 'Information');
   //$mail->addCC('cc@example.com');
   //$mail->addBCC('bcc@example.com');
 
@@ -250,7 +253,6 @@ if ($interval->days==14) {
       echo 'Message has been sent';
   }
 }
-
     }
 }
 
@@ -407,7 +409,7 @@ if(mw_estaLogueado()){
 
                     <li role='presentation' class='dropdown'>
                   <a href='javascript:;' class='dropdown-toggle info-number' data-toggle='dropdown' aria-expanded='false'>
-                    <i class='fa fa-envelope-o'></i>
+                    <i class='fa fa-bell-o'></i>
                     <span class='badge bg-green'>".$cont."</span>
                   </a>
                   <ul id='menu1' class='dropdown-menu list-unstyled msg_list' role='menu'>
@@ -593,7 +595,7 @@ if(mw_estaLogueado()){
 
                 <li role='presentation' class='dropdown'>
               <a href='javascript:;' class='dropdown-toggle info-number' data-toggle='dropdown' aria-expanded='false'>
-                <i class='fa fa-envelope-o'></i>
+                <i class='fa fa-bell-o'></i>
                 <span class='badge bg-green'>".$cont."</span>
               </a>
               <ul id='menu1' class='dropdown-menu list-unstyled msg_list' role='menu'>

@@ -1,23 +1,32 @@
-<h1>Listado de Empresas</h1>
-<hr />
-  <div class="container">
-     <div class="col-md-3">
-          <form method="post" action="index.php?page=listadoEmpresa" >
-                <div class="input-group">
 
-                    <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                    </span>
-                </div>
-            </form>
-        </div></br></br></br>
-        <button id="btnExport">Exportar a pdf</button>
-        <br />
-        <br />
-	   <div class="row">
-<div class="col-md-9" id="table_wrapper">
-<table class="table table-list-search" id="example-table" >
+<!-- Font Awesome -->
+<link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- NProgress -->
+<link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+<!-- iCheck -->
+<link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+<!-- Datatables -->
+<link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom Theme Style -->
+<link href="build/css/custom.min.css" rel="stylesheet">
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2 align="center">Listado Empresa</h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table id="datatable-fixed-header" class="table table-striped table-bordered">
   <thead>
   <tr>
     <th>
@@ -36,12 +45,11 @@
       Numero Contratos
     </th>
     <th>
-      &nbsp;
+    &nbsp;
     </th>
   </tr>
     </thead>
     <tbody>
-
 
   {{foreach tblempresa}}
       <tr>
@@ -85,85 +93,47 @@
       </tr>
   {{endfor tblempresa}}
     </tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="paging"></div>
-<a class="btn btn-primary pull-right" role="button"
-  href="index.php?page=empresa&mode=INS">
-      <span class="glyphicon glyphicon-plus"></span>
-       &nbsp;Agregar Nueva Empresa
-</a>
+  </table>
+  </div>
+  <button type="button" name="btnExport" class="btn btn-success pull-right" id="btnExport">Exportar</button>
+  </div>
+  </div>
 
+  <!-- FastClick -->
+  <script src="vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="vendors/nprogress/nprogress.js"></script>
+  <!-- iCheck -->
+  <script src="vendors/iCheck/icheck.min.js"></script>
+  <!-- Datatables -->
+  <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+  <script src="vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+  <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+  <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+  <script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+  <script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+  <script src="vendors/jszip/dist/jszip.min.js"></script>
+  <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+  <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
 
-
-<script type="text/javascript" src="public/js/datatable.min.js"></script>
-  <script type="text/javascript" src="public/js/datatable.jquery.min.js"></script>
 <script type="text/javascript">
-
-$(document).ready(function() {
-    var activeSystemClass = $('.list-group-item.active');
-
-    $('#system-search').keyup( function() {
-       var that = this;
-
-        var tableBody = $('.table-list-search tbody');
-        var tableRowsClass = $('.table-list-search tbody tr');
-        $('.search-sf').remove();
-        tableRowsClass.each( function(i, val) {
-
-
-            var rowText = $(val).text().toLowerCase();
-            var inputText = $(that).val().toLowerCase();
-            if(inputText != '')
-            {
-                $('.search-query-sf').remove();
-                tableBody.prepend('<tr class="search-query-sf"><td colspan="6"><strong>Searching for: "'
-                    + $(that).val()
-                    + '"</strong></td></tr>');
-            }
-            else
-            {
-                $('.search-query-sf').remove();
-            }
-
-            if( rowText.indexOf( inputText ) == -1 )
-            {
-
-                tableRowsClass.eq(i).hide();
-
-            }
-            else
-            {
-                $('.search-sf').remove();
-                tableRowsClass.eq(i).show();
-            }
-        });
-
-        if(tableRowsClass.children(':visible').length == 0)
-        {
-            tableBody.append('<tr class="search-sf"><td class="text-muted" colspan="6">No entries found.</td></tr>');
-        }
-    });
-
-    $('#example-table').datatable({
-        pageSize: 5,
-        sort: [true, true, false],
-    }) ;
-
     $("#btnExport").click(function(e) {
       e.preventDefault();
 
 
-      var data_type = 'data:application/vnd.ms-word';
-      var table_div = document.getElementById('table_wrapper');
+      var data_type = 'data:application/vnd.ms-excel';
+      var table_div = document.getElementById('datatable-fixed-header');
       var table_html = table_div.outerHTML.replace(/ /g, '%20');
 
       var a = document.createElement('a');
       a.href = data_type + ', ' + table_html;
-      a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.doc';
+      a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
       a.click();
     });
-});
 	</script>

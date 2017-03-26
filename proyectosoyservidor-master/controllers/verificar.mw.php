@@ -15,6 +15,7 @@
             $_SESSION["userLogged"] = true;
             $_SESSION["userName"] = $usuario;
             $_SESSION["rol"]=$rol;
+          //  $_SESSION["rolNombre"]=$rol;
         }else{
             $_SESSION["userLogged"] = false;
             $_SESSION["userName"] = "";

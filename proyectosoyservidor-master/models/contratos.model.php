@@ -115,7 +115,7 @@
      /*Actualizar contratos variables tipo datetime */
      function ActualizarContrato($contratoCodigo,$servcio,$contratoVigencia,$contratoFechaInicio,$contratoFechaFinal,$ContratoValor){
       $updSql = "UPDATE tblcontratos set contratoFechaInicio = '%s', contratoFechaFinal = '%s', VigenciaCodigo='%s', ContratoValor='%f',ServicioCodigo='%s' where contratoCodigo ='%d';";
-      $result = ejecutarNonQueryConErrores(sprintf($updSql,$contratoFechaInicio,$contratoFechaFinal,$contratoVigencia,$ContratoValor,$servcio,$contratoCodigo));
+      $result = ejecutarNonQuery(sprintf($updSql,$contratoFechaInicio,$contratoFechaFinal,$contratoVigencia,$ContratoValor,$servcio,$contratoCodigo));
       return $result ;
      }
 

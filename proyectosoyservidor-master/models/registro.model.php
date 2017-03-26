@@ -66,44 +66,12 @@
         return $contratos;
         }
 
-
-        function modificarContrasenia($registro,$codigo){
-          $query = "SELECT * FROM tblusuarios WHERE usuarioCodigo = '%d';";
-          $query = sprintf($query,$codigo);
-          $result = obtenerUnRegistro($query);
-          $contraseniaActual = $result["usrpwd"];
-
-          if($contraseniaActual == md5($registro["txtPwdAnt"])){
-            if($registro["txtPwdNew"] == $registro["txtPwdCof"]){
-
-              $query = "UPDATE tblusuarios SET usuarioContrasenia='%s' WHERE usuariocorreo ='%s';";
-              $query = sprintf($query,md5($registro["txtPwdNew"]),$codigo);
-
-              if (ejecutarNonQuery($query)){
-                //CONTRASEÑA CAMBIADA
-                return 1;
-              }else {
-                //ERROR EN LA CONSULTA
-                return 4;
-              }
-            }else {
-              //CONTRASEÑA NUEVA Y CONFIRMAR NO COINCIDEN
-              return 3;
-            }
-
-          }else {
-            //CONTRASEÑA ACTUAL NO CONICIDE CON LA INGRESADA
-            return 2;
-          }
-
-        }
-
      //Restablece la contrasena
-     function actualizarRegistro($usuarioCodigo, $password){
-       $updSql = "update tblusuarios set usuarioContrasenia='%s' where usuarioCodigo='%d';";
-       $result = ejecutarNonQuery(sprintf($updSql,$password,$usuarioCodigo));
-       return ($result > 0) && true;
-     }
+    function actualizarRegistro($usuarioCodigo, $password){
+     $updSql = "update tblusuarios set usuarioContrasenia='%s' where usuarioCodigo='%d';";
+     $result = ejecutarNonQuery(sprintf($updSql,$password,$usuarioCodigo));
+     return ($result > 0) && true;
+   }
 
     function obtenerCodigo($usuarioCodigo){
       $registro = array();

@@ -6,7 +6,7 @@
      */
 
       //Cargando Plantillero
-      require_once("libs/template_engine.php");
+      /*require_once("libs/template_engine.php");
 
       function run(){
       
@@ -15,5 +15,5 @@
                     "layoutalt.view.tpl"
                 );
       }
-      run();
+      run();*/
 ?>

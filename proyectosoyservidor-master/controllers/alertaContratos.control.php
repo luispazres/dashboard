@@ -44,7 +44,7 @@
         </tr>";
       }
 
-      if ($interval->days==14) {
+      if ($interval->days==13) {
         $td.="<tr class='warning'>
           <td>
             ".$key["ContratoCodigo"]."
@@ -64,7 +64,7 @@
         </tr>";
       }
 
-      if ($interval->days==29) {
+      if ($interval->days==28) {
 
         $td.="<tr class='success'>
           <td>
@@ -85,7 +85,7 @@
         </tr>";
       }
 
-      if ($interval->days==6) {
+      if ($interval->days==5) {
 
         $td.="<tr class='info'>
           <td>

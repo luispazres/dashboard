@@ -73,9 +73,7 @@ ini_set('display_errors', '1');
     }else {
       mw_redirectToLogin("page=login2");
     }
-
-
-
   }
   run();
 ?>
+

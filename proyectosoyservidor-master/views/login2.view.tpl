@@ -1,4 +1,4 @@
-{{if mostrarErrores}}
+﻿{{if mostrarErrores}}
 <ul class="error">
     {{foreach errores}}
         <li>{{errmsg}}</li>
@@ -15,10 +15,9 @@
       <label>Usuario:</label>
       <input type="text" name="txtUser" value="{{txtUser}}" placeholder="ejemplo@gmail.com"/></br>
       <label>Contraseña</label>
-      <input type="password" name="txtPswd" value="{{txtPswd}}" placeholder="Contrasena"></br>
+      <input type="password" name="txtPswd" value="{{txtPswd}}" placeholder="Contrasena">
         <br><input type="hidden" name="returnUrl" value="{{returnUrl}}"/>
-      <br><input type="submit" name="btnLogin" value="Ingresar"/></br>
-       <input type="submit" name="btnPrueba" value="Probando"/></br>
+      <br><input type="submit" name="btnLogin" value="Ingresar"/>
     </form>
   </tr>
   </center>

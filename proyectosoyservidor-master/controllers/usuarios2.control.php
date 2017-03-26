@@ -53,8 +53,7 @@ function run(){
   }else {
     mw_redirectToLogin("page=login2");
   }
-
-
    }
    run();
  ?>
+

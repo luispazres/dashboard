@@ -3,7 +3,6 @@
   require_once("models/contratos.model.php");
   require_once("models/subirArchivo.model.php");
 
-
   function run(){
 
     if(mw_estaLogueado()){
@@ -36,8 +35,7 @@
     }else {
       mw_redirectToLogin("page=login2");
     }
-
-
   }
   run();
  ?>
+

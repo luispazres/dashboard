@@ -65,17 +65,17 @@
       case "restablecerContrasena":
                  require_once("controllers/restablecerContrasena.control.php");
                  break;
-      case "layoutalt":
+     case "layoutalt":
                  require_once("controllers/layoutalt.control.php");
                  break;
-      case "alertaContratos":
+     case "alertaContratos":
                   require_once("controllers/alertaContratos.control.php");
                   break;
-      case "dashboard":
+    case "dashboard":
                   require_once("controllers/dashboard.control.php");
                   break;
-      default:
-          require_once("controllers/error.control.php");
+        default:
+            require_once("controllers/error.control.php");
 
     }
 ?>

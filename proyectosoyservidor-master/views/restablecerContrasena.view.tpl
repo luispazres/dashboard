@@ -1,44 +1,53 @@
-<div class="container">
-    <div class="row">
-        <section>
-            <div class="col-lg-8 col-lg-offset-2">
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Restablecer Contraseña</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
               <form id="defaultForm" action="index.php?page=restablecerContrasena" method="post" class="form-horizontal">
 
                    <div class="form-group">
-                     <label class="col-lg-3 control-label">Código:</label>
-                       <div class="col-lg-5">
+                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Código:</label>
+                       <div class="col-md-9 col-sm-9 col-xs-12">
                           <input class="col8" type="hidden" name="txtUsuarioCodigo"  value="{{usuarioCodigo}}" />
                           {{usuarioCodigo}}
                         </div>
                      </div>
 
                          <div class="form-group">
-                          <label class="col-lg-3 control-label">Nueva Contraseña:</label>
-                            <div class="col-lg-5">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Nueva Contraseña:</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
                             <input class="form-control" type="password" name="password" value="{{password}}" />
                           </div>
                         </div>
 
                         <div class="form-group">
-                         <label class="col-lg-3 control-label">Confirmar Contraseña:</label>
-                           <div class="col-lg-5">
+                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirmar Contraseña:</label>
+                          <div class="col-md-9 col-sm-9 col-xs-12">
                            <input class="form-control" type="password" name="txtPasswordCnf" value="{{txtPasswordCnf}}"/>
                          </div>
                        </div>
 
+                       <div class="ln_solid"></div>
                        <div class="form-group">
-                         <div class="col-lg-9 col-lg-offset-3">
-                            <input type="submit" class="btn btn-primary"  style="margin-top: 15px;" name="btnGuardar" value="Guardar" />
+                         <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="submit" class="btn btn-success" style="margin-left:36%; margin-top: 15px;" name="btnGuardar" value="Guardar" />
                             &nbsp;
                             <a href="index.php?page=usuarios" style="margin-top: 15px;" class="btn btn-warning" role="button" >Cancelar</a>
                                      <input type="hidden" name="returnUrl" value="{{returnUrl}}"/>
                             </div>
                         </div>
                      </form>
-                  </div>
-            </section>
-        </div>
-      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
 
       <script type="text/javascript">
       $(document).ready(function() {

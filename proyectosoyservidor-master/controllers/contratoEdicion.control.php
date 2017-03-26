@@ -23,20 +23,16 @@ function run(){
     if(isset($_POST["btnGuardar"])){
       //  $servicon=array("servicio"=>$_POST["ContratoFechaFinal"]);
         $EmpresaCodigo="";
-        $errores="";
         $EmpresaCodigo=$_POST["txtEmpresaCodigo"];
         $location="";
-        $errores=ActualizarContrato( $_POST["txtCodContrato"],  $_POST["txtServicio"],$_POST["txtVigencia"] ,$_POST["ContratoFechaInicio"],$_POST["ContratoFechaFinal"],$_POST["ContratoValor"]);
-        $location="Location:index.php?page=VerContratos&mode=Ver&EmpresaCodigo=".$EmpresaCodigo."&error=".$errores;
+        ActualizarContrato( $_POST["txtCodContrato"],  $_POST["txtServicio"],$_POST["txtVigencia"] ,$_POST["ContratoFechaInicio"],$_POST["ContratoFechaFinal"],$_POST["ContratoValor"]);
+        $location="Location:index.php?page=VerContratos&mode=Ver&EmpresaCodigo=".$EmpresaCodigo;
         header($location);
     }
      renderizar("contratoEdicion",array("datos" => $Datos, "servicio"=>$servicio,"vigencias"=>$vigencias,"contratoCodigo"=>$ContratoCodigo,"empresaCodigo"=>$EmpresaCodigo ) );
   }else {
     mw_redirectToLogin("page=login2");
   }
-
-
 }
-
   run();
  ?>
